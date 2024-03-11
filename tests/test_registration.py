@@ -2,13 +2,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from locators import *
+from helpers import generate_email, generate_password
 
 
 class TestRegistration:
-    def test_successful_registration(self, generate_email, generate_password, driver):
+    def test_successful_registration(self, driver):
         name = "Valentina"
-        email = generate_email
-        password = generate_password
+        email = generate_email()
+        password = generate_password()
         driver.find_element(By.XPATH, LOGIN_ACCOUNT_BUTTON).click()
         driver.find_element(By.LINK_TEXT, REGISTER_LINK).click()
         driver.find_element(By.XPATH, NAME_REGISTRATION_INPUT).send_keys(name)
@@ -24,9 +25,9 @@ class TestRegistration:
         # Проверяем, что после успешного входа произошел переход на главную страницу
         assert driver.find_element(By.CLASS_NAME, MAIN_PAGE).is_displayed()
 
-    def test_registration_with_invalid_password(self, generate_email, driver):
+    def test_registration_with_invalid_password(self, driver):
         # Данные для регистрации
-        email = generate_email
+        email = generate_email()
         name = "Valentina"
         invalid_password = "short"
 
