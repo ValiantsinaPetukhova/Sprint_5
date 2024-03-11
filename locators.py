@@ -19,10 +19,7 @@ PROFILE_PAGE = "Профиль" # страница профиля
 CONSTRUCTOR_PAGE = "BurgerIngredients_ingredients__1N8v2" # страница конструктора
 LOGO_AREA = "div.AppHeader_header__logo__2D0X2" # поле с логотипом
 LOGOUT_BUTTON = ".//button[text()='Выход']" # кнопка выхода из аккаунта
-BUNS_SECTION = ".//span[text()='Булки']"
-SAUCES_SECTION = ".//span[text()='Соусы']"
-FILLINGS_SECTION = ".//span[text()='Начинки']"
-SOME_SAUCE = ".//a[@href='/ingredient/61c0c5a71d1f82001bdaaa75']" # карточка с соусом для проверки видимости
-SOME_BUNS = ".//a[@href='/ingredient/61c0c5a71d1f82001bdaaa6d']"
-SOME_FILLING = ".//a[@href='/ingredient/61c0c5a71d1f82001bdaaa6f']"
+BUNS_SECTION = ".//span[text()='Булки']/ancestor::div[1]"
+SAUCES_SECTION = ".//span[text()='Соусы']/ancestor::div[1]"
+FILLINGS_SECTION = ".//span[text()='Начинки']/ancestor::div[1]"
 
