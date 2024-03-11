@@ -6,8 +6,7 @@ from locators import *
 
 class TestSwitchToAccount:
 
-    def test_going_on_personal_account_page(self, new_user_registration, driver_creation):
-        driver = driver_creation
+    def test_going_on_personal_account_page(self, new_user_registration, driver):
         email = new_user_registration[0]
         password = new_user_registration[1]
         # Login
@@ -24,6 +23,5 @@ class TestSwitchToAccount:
         account_page = driver.find_element(By.LINK_TEXT, PROFILE_PAGE)
         # Проверяем, что отображается страница личного кабинета
         assert account_page.is_displayed()
-        driver.quit()
 
 

@@ -5,8 +5,7 @@ from locators import *
 
 
 class TestLogout:
-    def test_logout(self, new_user_registration, driver_creation):
-        driver = driver_creation
+    def test_logout(self, new_user_registration, driver):
         email = new_user_registration[0]
         password = new_user_registration[1]
         # Login
@@ -27,6 +26,5 @@ class TestLogout:
         login_page = driver.find_element(By.CSS_SELECTOR, LOGIN_PAGE)
         # Проверяем, что отображается страница входа
         assert login_page.is_displayed()
-        driver.quit()
 
 

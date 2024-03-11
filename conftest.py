@@ -23,11 +23,10 @@ def generate_password():
 
 
 @pytest.fixture
-def new_user_registration(driver_creation, generate_email, generate_password):
+def new_user_registration(driver, generate_email, generate_password):
     name = "Valentina"
     email = generate_email
     password = generate_password
-    driver = driver_creation
     driver.find_element(By.XPATH, LOGIN_ACCOUNT_BUTTON).click()
     driver.find_element(By.LINK_TEXT, REGISTER_LINK).click()
     driver.find_element(By.XPATH, NAME_REGISTRATION_INPUT).send_keys(name)
@@ -40,7 +39,12 @@ def new_user_registration(driver_creation, generate_email, generate_password):
 
 
 @pytest.fixture
-def driver_creation():
+def driver(request):
     driver = webdriver.Chrome()
     driver.get("https://stellarburgers.nomoreparties.site/")
+
+    def fin():
+        driver.quit()
+
+    request.addfinalizer(fin)
     return driver

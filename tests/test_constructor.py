@@ -5,8 +5,7 @@ from locators import *
 
 
 class TestConstructor:
-    def test_switch_to_buns(self, new_user_registration, driver_creation):
-        driver = driver_creation
+    def test_switch_to_buns(self, new_user_registration, driver):
         email = new_user_registration[0]
         password = new_user_registration[1]
         # Login
@@ -30,10 +29,8 @@ class TestConstructor:
         # Проверяем, что ранее скрытый элемент стал видимым
         element_buns = driver.find_element(By.XPATH, SOME_BUNS)
         assert element_buns.is_displayed()
-        driver.quit()
 
-    def test_switch_to_sauces(self, new_user_registration, driver_creation):
-        driver = driver_creation
+    def test_switch_to_sauces(self, new_user_registration, driver):
         email = new_user_registration[0]
         password = new_user_registration[1]
         # Login
@@ -50,10 +47,8 @@ class TestConstructor:
         # Проверяем, что ранее скрытый элемент стал видимым
         element_sauce = driver.find_element(By.XPATH, SOME_SAUCE)
         assert element_sauce.is_displayed()
-        driver.quit()
 
-    def test_switch_to_fillings(self, new_user_registration, driver_creation):
-        driver = driver_creation
+    def test_switch_to_fillings(self, new_user_registration, driver):
         email = new_user_registration[0]
         password = new_user_registration[1]
         # Login
@@ -70,4 +65,3 @@ class TestConstructor:
         # Проверяем, что ранее скрытый элемент стал видимым
         element_filling = driver.find_element(By.XPATH, SOME_FILLING)
         assert element_filling.is_displayed()
-        driver.quit()

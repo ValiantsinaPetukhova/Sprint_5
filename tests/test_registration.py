@@ -5,8 +5,7 @@ from locators import *
 
 
 class TestRegistration:
-    def test_successful_registration(self, generate_email, generate_password, driver_creation):
-        driver = driver_creation
+    def test_successful_registration(self, generate_email, generate_password, driver):
         name = "Valentina"
         email = generate_email
         password = generate_password
@@ -24,11 +23,9 @@ class TestRegistration:
         driver.find_element(By.CSS_SELECTOR, PASSWORD_INPUT).send_keys(password)
         # Проверяем, что после успешного входа произошел переход на главную страницу
         assert driver.find_element(By.CLASS_NAME, MAIN_PAGE).is_displayed()
-        driver.quit()
 
-    def test_registration_with_invalid_password(self, generate_email, driver_creation):
+    def test_registration_with_invalid_password(self, generate_email, driver):
         # Данные для регистрации
-        driver = driver_creation
         email = generate_email
         name = "Valentina"
         invalid_password = "short"
@@ -44,6 +41,5 @@ class TestRegistration:
         # Проверяем наличие сообщения об ошибке
         error_message = driver.find_element(By.CSS_SELECTOR, ERROR_MESSAGE_PASSWORD)
         assert error_message.is_displayed()
-        driver.quit()
 
 
